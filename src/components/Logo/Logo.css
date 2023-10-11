@@ -1,0 +1,14 @@
+.logo {
+  width: 38px;
+  height: 38px;
+  text-decoration: none;
+}
+
+.header__logo {
+  margin: 0;
+}
+
+.header__link {
+  display: flex;
+  align-items: center; /* Выравнивание по центру вертикально */
+}

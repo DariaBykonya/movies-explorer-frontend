@@ -1,0 +1,25 @@
+.header {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 70px; /* Отступы сверху и снизу, а также слева и справа */
+  background-color: #202020;
+  align-items: center; /* Выравнивание по центру вертикально */
+}
+
+.header__main {
+  background-color: #073042;
+}
+
+@media screen and (max-width: 920px) {
+  .header{
+    padding: 15px 30px; /* Отступы сверху и снизу, а также слева и справа */
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .header{
+    padding: 15px 14px; /* Отступы сверху и снизу, а также слева и справа */
+    align-items: center;
+  }
+}

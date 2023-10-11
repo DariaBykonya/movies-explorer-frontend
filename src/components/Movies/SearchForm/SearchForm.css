@@ -1,0 +1,149 @@
+.search {
+  display: flex;
+  justify-content: space-between;
+  height: 72px;
+  border-radius: 9px;
+  background-color: #2F2F2F;
+  margin: 70px 70px;
+  padding: 17px 29px 15px 22px;
+  box-sizing: border-box;
+  align-items: center;
+  gap: 27px;
+}
+
+.search__form {
+  display: flex;
+  max-width: 900px;
+  width: 100%;
+}
+
+.search__icon {
+  background-image: url(../../../images/icon-search.svg);
+  width: 34px;
+  height: 34px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-right: 10px;
+}
+
+.search__input {
+  background-color: #2F2F2F;
+  border: none;
+  width: 100%;
+  color: #8B8B8B;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.search__input::placeholder {
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8B8B8B;
+    font-family: Inter;
+}
+
+.search__input:focus {
+  outline: none;
+  border: none;
+}
+
+.search__button {
+  border-radius: 48px;
+  width: 59px;
+  height: 34px;
+  background: #4285F4;
+  border: none;
+  color: #FFF;
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding: 8px 14px;
+}
+
+.search__button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  background: #3456F3
+}
+
+.search__line {
+  /* margin-left: 30px; */
+  border-right: 1px solid rgba(66, 66, 66, 1);
+  height: 100%;
+}
+
+.search__underline {
+  border-bottom: 1px solid #424242;
+  margin: 10px 70px 10px;
+}
+
+@media screen and (max-width: 920px) {
+  .search {
+    margin: 80px 30px;
+    padding: 16px 20px 16px 24px;
+    gap: 18px;
+  }
+  .search__icon {
+    margin-right: 10px;
+  }
+
+  .search__form {
+    /* max-width: 390px; */
+  }
+
+  .search__underline {
+    margin: 0 30px 10px;
+    padding: 14px;
+}
+
+  .search__button {
+    /* text-align: center;  */
+    padding: 8px 13px;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .search {
+    flex-direction: column;
+    margin: 81px 10px 45px;
+    gap: 64px;
+    padding: 19px 20px 20px;
+  }
+
+  .search__icon {
+    display: none;
+  }
+
+  .search__line {
+    display: none;
+  }
+
+  .search__input {
+    padding: 0;
+  }
+
+  .search__underline {
+    margin: 0 14px 10px;
+    padding-top: 50px;
+  }
+  
+
+  .search__input::placeholder {
+    color: #8B8B8B;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  }
+}
