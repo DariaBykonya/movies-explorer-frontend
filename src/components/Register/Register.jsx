@@ -19,8 +19,8 @@ function Register () {
   const isFormValid = !nameError && name !== '' && !emailError && email !== '' && !passwordError && password !== '';
 
   const buttonClass = isFormValid
-  ? 'register__button-form register__button_valid'
-  : 'register__button-form register__button_invalid';
+  ? 'register__button-form register__button-form_valid'
+  : 'register__button-form register__button-form_invalid';
 
   const handleNameChange = (event) => {
     const value = event.target.value;

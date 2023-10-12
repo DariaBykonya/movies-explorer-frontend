@@ -40,7 +40,7 @@ function MoviesCardList({ movies, savedMovies }) {
   
   return(
     <section>
-      <ul className='movies-cards__list'>
+      <ul className='movies-list'>
         {movies.length === 0 ? (
           <p className='movies-cards__found-nothing-text'>Ничего не найдено</p>
         ) : (

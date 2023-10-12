@@ -3,9 +3,9 @@ import "./Logo.css"
 
 function Logo() {
   return (
-    <a href="/" className="logo__link">
+    <a href="/" className="logo">
       <img
-        className="logo logo__image"
+        className="logo__image"
         src={logo}
         alt="Логотип сайта"
       />

@@ -91,12 +91,12 @@
   cursor: pointer;
 }
 
-.login__button_valid {
+.login__button-form_valid {
   background: #3456F3;
   color: #FFF;
 }
 
-.login__button_invalid {
+.login__button-form_invalid {
   border-radius: 3px;
   background-color: #F8F8F8;
   color: #C2C2C2;

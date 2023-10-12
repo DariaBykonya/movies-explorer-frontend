@@ -11,7 +11,7 @@
   gap: 27px;
 }
 
-.search__container {
+.search__form {
   display: flex;
   max-width: 900px;
   width: 100%;
@@ -82,7 +82,7 @@
   height: 100%;
 }
 
-.search__underline {
+.underline-search-form {
   border-bottom: 1px solid #424242;
   margin: 10px 70px 10px;
 }
@@ -97,7 +97,7 @@
     margin-right: 10px;
   }
 
-  .search__underline {
+  .underline-search-form {
     margin: 0 30px 10px;
     padding: 14px;
 }
@@ -127,7 +127,7 @@
     padding: 0;
   }
 
-  .search__underline {
+  .underline-search-form {
     margin: 0 14px 10px;
     padding-top: 50px;
   }

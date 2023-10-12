@@ -12,7 +12,7 @@ function Header() {
   return (
     <header
       className={`page-content header ${
-        location.pathname === '/' ? 'header__main' : ''
+        location.pathname === '/' ? 'header_main' : ''
       }`}
     >
     <Logo />

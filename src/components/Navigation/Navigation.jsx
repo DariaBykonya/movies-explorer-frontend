@@ -33,17 +33,17 @@ function Navigation({ loggedIn }) {
               </NavLink>
             </nav>
           </div>
-          <a href="/profile" className='navigation__account'>
-            <p className='navigation__account-title'>Аккаунт</p>
-            <div className={`navigation__icon-background ${location.pathname === '/' ? 'navigation__icon-background-home' : ''}`}>
+          <a href="/profile" className='account'>
+            <p className='account__title'>Аккаунт</p>
+            <div className={`account__icon-background ${location.pathname === '/' ? 'account__icon-background-home' : ''}`}>
               <img
-              className='navigation__account-icon'
+              className='account__icon'
               src={account}
               alt='картинка аккаунта'
               />
             </div>
           </a>
-        <button className="navigation__menu" onClick={toggleBurgerMenu} type="button"></button>
+        <button className="burger-btn" onClick={toggleBurgerMenu} type="button"></button>
       </>
       ) : 
       (

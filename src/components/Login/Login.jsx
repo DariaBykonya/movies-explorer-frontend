@@ -16,8 +16,8 @@ function Login () {
   const isFormValid = !emailError && email !== '' && !passwordError && password !== '';
 
   const buttonClass = isFormValid
-  ? 'login__button-form login__button_valid'
-  : 'login__button-form login__button_invalid';
+  ? 'login__button-form login__button-form_valid'
+  : 'login__button-form login__button-form_invalid';
   
   const handleEmailChange = (event) => {
     const value = event.target.value;

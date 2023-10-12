@@ -5,15 +5,15 @@ function SearchForm() {
   return (
     <>
       <section className="search">
-        <div className="search__container">
+        <form className="search__form">
           <div className="search__icon"></div>
           <input className="search__input" type="text" placeholder="Фильм" required/>
           <button className="search__button" type="submit">Найти</button>
-        </div>
+        </form>
         <div className="search__line">&nbsp;</div>
         <FilterCheckbox />
       </section>
-      <div className="search__underline"></div>
+      <div className="underline-search-form"></div>
     </>
   )
 }

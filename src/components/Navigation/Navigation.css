@@ -29,7 +29,7 @@
 }
 
 /* Стили для блока аккаунта */
-.navigation__account {
+.account {
   text-decoration: none;
   font-size: 16px;
   display: flex;
@@ -42,18 +42,18 @@
   width: 100px;
 }
 
-.navigation__account:hover {
+.account:hover {
   opacity: 0.7;
   cursor: pointer;
 }
 
 
-.navigation__account-icon {
+.account__icon {
   width: 11px;
   height: 11px;
 }
 
-.navigation__icon-background {
+.account__icon-background {
   border-radius: 50px;
   background: #313131;;
   flex-shrink: 0;
@@ -64,11 +64,11 @@
   align-items: center;
 }
 
-.navigation__icon-background-home {
+.account__icon-background-home {
   background-color: #0F4157;
 }
 
-.navigation__account-title {
+.account__title {
   font-feature-settings: 'clig' off, 'liga' off;
   font-size: 13px;
   font-style: normal;
@@ -127,7 +127,7 @@
   opacity: 0.8;
 }
 
-.navigation__menu {
+.burger-btn {
   border: 0;
   background-image: url(../../images/burger-open.svg);
   background-position: center;
@@ -144,7 +144,7 @@
   .navigation__link-title.active {
     border-bottom: #FFF solid 2px;
   }
-  .navigation__menu {
+  .burger-btn {
     display: inline-block;
   }
 
@@ -152,7 +152,7 @@
     display: none;
   }
 
-  .navigation__account {
+  .account {
     display: none;
   }
 }
@@ -169,7 +169,7 @@
     justify-content: center;
   }
 
-  .navigation__menu {
+  .burger-btn {
     background-image: url(../../images/test.svg);
     height: 43px;
     width: 40px;   

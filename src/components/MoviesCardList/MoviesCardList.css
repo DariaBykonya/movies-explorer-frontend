@@ -1,4 +1,4 @@
-.movies-cards__list {
+.movies-list {
   padding: 70px 70px 10px;
   display: grid;
   gap: 30px 20px;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 920px) {
-  .movies-cards__list {
+  .movies-list {
     padding-left: 30px;
     padding-right: 30px;
     gap: 16px 30px;
@@ -16,7 +16,7 @@
 }
 
 @media screen and (max-width: 590px) {
-  .movies-cards__list {
+  .movies-list {
     padding: 40px 10px;
     gap: 33px;
   }

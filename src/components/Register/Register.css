@@ -95,12 +95,12 @@
   cursor: pointer;
 }
 
-.register__button_valid {
+.register__button-form_valid {
   background: #3456F3;
   color: #FFF;
 }
 
-.register__button_invalid {
+.register__button-form_invalid {
   border-radius: 3px;
   background-color: #F8F8F8;
   color: #C2C2C2;
