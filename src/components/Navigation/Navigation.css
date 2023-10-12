@@ -1,0 +1,185 @@
+.navigation {
+  margin-right: auto;
+  margin-left: 45px;
+}
+
+/* Стили для навигационных ссылок */
+.navigation__link-title {
+  text-decoration: none;
+  text-align: right;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  color: #FFF;
+}
+
+.navigation__link-title:hover {
+  opacity: 0.7;
+}
+
+.navigation__link-title.active {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.navigation__links {
+  display: flex;
+  gap: 17px;
+}
+
+/* Стили для блока аккаунта */
+.navigation__account {
+  text-decoration: none;
+  font-size: 16px;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 1px;
+  border-radius: 40px;
+  box-shadow: 0px 3px 14px 0px rgba(0, 0, 0, 0.08);
+  width: 100px;
+}
+
+.navigation__account:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+
+.navigation__account-icon {
+  width: 11px;
+  height: 11px;
+}
+
+.navigation__icon-background {
+  border-radius: 50px;
+  background: #313131;;
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navigation__icon-background-home {
+  background-color: #0F4157;
+}
+
+.navigation__account-title {
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 12px;
+  color: #FFF;
+}
+
+.navigation__auth-link {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.navigation__signup {
+  text-align: right;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  text-decoration: none;
+  color: #FFF;
+}
+
+.navigation__signup:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.header__signout:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.navigation__signin {
+  width: 76px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 3px;
+  background: #3DDC84;
+  border: none;
+  color: #000;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  cursor: pointer;
+  line-height: 30px;
+  height: 32px
+}
+
+.navigation__signin:hover {
+  opacity: 0.8;
+}
+
+.navigation__menu {
+  border: 0;
+  background-image: url(../../images/burger-open.svg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  height: 44px;
+  width: 44px;
+  display: none;
+}
+
+@media screen and (max-width: 920px) {
+
+  .navigation__link-title.active {
+    border-bottom: #FFF solid 2px;
+  }
+  .navigation__menu {
+    display: inline-block;
+  }
+
+  .navigation {
+    display: none;
+  }
+
+  .navigation__account {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 590px) {
+
+  .navigation__signin {
+    width: 54px;
+    height: 26px;
+    font-size: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navigation__menu {
+    background-image: url(../../images/test.svg);
+    height: 43px;
+    width: 40px;   
+  }
+
+  .navigation__signup {
+    font-size: 10px;
+  }
+
+  .navigation__auth-link {
+    gap: 14px;
+  }
+}
