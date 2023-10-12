@@ -110,6 +110,17 @@
   }
 }
 
+@media screen and (max-width: 706px) {
+  .techs__items {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 10px;
+    margin-top: 50px;
+    max-width: 178px;
+    margin-bottom: 70px;
+  }
+
+}
+
 @media screen and (max-width: 520px) {
   .techs {
     padding: 70px 18px 0;
@@ -138,13 +149,5 @@
     line-height: 16px;
     letter-spacing: -0.44px;
     margin-top: 24px;
-  }
-
-  .techs__items {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px 10px;
-    margin-top: 50px;
-    max-width: 178px;
-    margin-bottom: 70px;
   }
 }

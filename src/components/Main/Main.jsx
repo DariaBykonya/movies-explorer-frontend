@@ -9,14 +9,16 @@ function Main() {
 
 
     return (
-      <div>
+      <>
         <Header />
-        <Promo />
-        <AboutProject />
-        <Techs />
-        <AboutMe />
+        <main>
+          <Promo />
+          <AboutProject />
+          <Techs />
+          <AboutMe />
+        </main>
         <Footer />
-      </div>
+      </>
   )};
   
   export default Main

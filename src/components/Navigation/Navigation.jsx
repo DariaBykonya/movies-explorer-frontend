@@ -33,7 +33,6 @@ function Navigation({ loggedIn }) {
               </NavLink>
             </nav>
           </div>
-          <div className='navigation__account'>
           <a href="/profile" className='navigation__account'>
             <p className='navigation__account-title'>Аккаунт</p>
             <div className={`navigation__icon-background ${location.pathname === '/' ? 'navigation__icon-background-home' : ''}`}>
@@ -44,7 +43,6 @@ function Navigation({ loggedIn }) {
               />
             </div>
           </a>
-        </div>
         <button className="navigation__menu" onClick={toggleBurgerMenu} type="button"></button>
       </>
       ) : 

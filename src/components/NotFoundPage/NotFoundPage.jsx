@@ -9,11 +9,11 @@ function NotFoundPage() {
     };
 
     return (
-        <div className="error-page">
-                <h1 className="error-page__title">404</h1>
-                <p className="error-page__subtitle">Страница не найдена</p>
-                <a className='error-page__back' onClick={handleGoBack}>Назад</a>
-        </div>    
+        <main className="error-page">
+            <h1 className="error-page__title">404</h1>
+            <p className="error-page__subtitle">Страница не найдена</p>
+            <a className='error-page__back' onClick={handleGoBack}>Назад</a>
+        </main>    
   )};
   
   export default NotFoundPage

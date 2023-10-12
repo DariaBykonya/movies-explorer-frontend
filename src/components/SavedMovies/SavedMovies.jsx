@@ -11,8 +11,10 @@ function SavedMovies() {
   return (
     <>
       <Header />
-      <SearchForm />
-      <MoviesCardList movies={movies} savedMovies={savedMovies}/>
+      <main>
+        <SearchForm />
+        <MoviesCardList movies={movies} savedMovies={savedMovies}/>
+      </main>
       <Footer />
     </>
   );

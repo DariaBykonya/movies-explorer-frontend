@@ -4,7 +4,7 @@ import Portfolio from "../Portfolio/Portfolio"
 
 function AboutMe() {
   return (
-      <div className="student">
+      <section className="student">
         <h2 className="student__header">Студент</h2>
         <div className="student__line"></div>
         <div className="student__info">
@@ -17,7 +17,7 @@ function AboutMe() {
           <img className="student__photo" src={myPhoto} alt="фотография студента" />
         </div>
         <Portfolio />
-      </div>
+      </section>
   )
 }
 

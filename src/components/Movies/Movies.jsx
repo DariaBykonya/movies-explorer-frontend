@@ -10,9 +10,11 @@ function Movies() {
   return (
     <>
       <Header />
-      <SearchForm />
-      <MoviesCardList movies={movies} savedMovies={savedMovies}/>
-      <MoreBtn />
+      <main>
+        <SearchForm />
+        <MoviesCardList movies={movies} savedMovies={savedMovies}/>
+        <MoreBtn />
+      </main>
       <Footer />
     </>
   );

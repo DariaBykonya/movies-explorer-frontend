@@ -4,11 +4,11 @@
   text-decoration: none;
 }
 
-.header__logo {
+.logo__image {
   margin: 0;
 }
 
-.header__link {
+.logo__link {
   display: flex;
   align-items: center; /* Выравнивание по центру вертикально */
 }

@@ -19,12 +19,7 @@ function BurgerMenu ({ isOpen, onClose }) {
             <li className=""><NavLink onClick={onClose} className={makeLinkActive} to="/movies">Фильмы</NavLink></li>
             <li className=""><NavLink onClick={onClose} className={makeLinkActive} to="/saved-movies">Сохранённые фильмы</NavLink></li>
             <li className="burger__item_profile"><NavLink onClick={onClose} className={makeProfileLinkActive} to="/profile">Аккаунт
-                  {/* <img 
-                    className='header__account-icon'
-                    src={account}
-                    alt='картинка аккаунта'
-                  /> */}
-                </NavLink>
+              </NavLink>
             </li>
             <button className="burger__close" onClick={onClose}></button>
         </ul>

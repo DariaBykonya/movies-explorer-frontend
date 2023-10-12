@@ -54,11 +54,11 @@ function Register () {
   };
 
   return (
-    <div className="register">
-      <div className="register__logo">
+    <section className="register">
+      <header className="register__logo">
         <Logo />
-      </div>
-      <div className="register__container">
+      </header>
+      <main className="register__container">
         <div className="register__body">
             <h1 className="register__title">Добро пожаловать!</h1>
           <form
@@ -100,7 +100,7 @@ function Register () {
             type="password"
             name="email"
             id="pass"
-            className={`register__input pass-error register__input_type_password ${passwordError !== '' ? 'register__input_invalid' : ''}`}
+            className={`register__input register__input_type_password ${passwordError !== '' ? 'register__input_invalid' : ''}`}
             required
             value={password}
             onChange={handlePasswordChange}
@@ -118,8 +118,8 @@ function Register () {
           <p className="register__subtitle">Уже зарегистрированы? <Link to="/signin" className="register__link-navigate">Войти</Link>
             </p>
         </div>
-      </div>
-    </div>
+      </main>
+    </section>
 )};
 
 export default Register

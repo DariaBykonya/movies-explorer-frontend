@@ -41,11 +41,11 @@ function Login () {
   };
 
   return (
-    <div className="login">
-      <div className="login__logo">
+    <section className="login">
+      <header className="login__logo">
         <Logo />
-      </div>
-      <div className="login__container">
+      </header>
+      <main className="login__container">
         <div className="login__body">
             <h1 className="login__title">Рады видеть!</h1>
           <form
@@ -89,8 +89,8 @@ function Login () {
           <p className="login__subtitle">Ещё не зарегистрированы? <Link to="/signup" className="login__link-navigate">Регистрация</Link>
             </p>
         </div>
-      </div>
-    </div>
+      </main>
+    </section>
 )};
 
 export default Login
