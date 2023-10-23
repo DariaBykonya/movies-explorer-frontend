@@ -3,7 +3,7 @@ import "./Register.css"
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-function Register () {
+function Register ({ onRegister, isRegisterError, setIsRegisterError }) {
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -16,17 +16,26 @@ function Register () {
   const [emailFocused, setEmailFocused] = useState(false);
   const [passwordFocused, setPasswordFocused] = useState(false);
 
-  const isFormValid = !nameError && name !== '' && !emailError && email !== '' && !passwordError && password !== '';
+  const isFormValid = !nameError && name !== '' && !emailError && email !== '' && !passwordError && password !== '' && !isRegisterError;
 
   const buttonClass = isFormValid
   ? 'register__button-form register__button-form_valid'
   : 'register__button-form register__button-form_invalid';
 
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    onRegister(name, email, password)
+  };
+
   const handleNameChange = (event) => {
     const value = event.target.value;
     setName(value);
+    const namePattern = /^[a-zа-я\s-]+$/i;
+
     if (value.length < 2 || value.length > 30) {
       setNameError('Имя должно содержать от 2 до 30 символов');
+    } else if (!namePattern.test(value)) {
+      setNameError('поле name содержит только латиницу, кириллицу, пробел или дефис');
     } else {
       setNameError('');
     }
@@ -34,6 +43,7 @@ function Register () {
   
   const handleEmailChange = (event) => {
     const value = event.target.value;
+    setIsRegisterError(false)
     setEmail(value);
     const emailPattern = /^([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})$/;
     if (!emailPattern.test(value)) {
@@ -62,16 +72,21 @@ function Register () {
         <div className="register__body">
             <h1 className="register__title">Добро пожаловать!</h1>
           <form
-            className="register__form" id="form" noValidate
+            className="register__form"
+            id="form"
+            noValidate
+            onSubmit={handleSubmit}
           >
-            <label for="name" className="register__label">Имя</label>
+            <label htmlFor="name" className="register__label">Имя</label>
             <input
             name="name"
             type="text"
             id="name"
             className={`register__input register__input_type_name ${nameError !== '' ? 'register__input_invalid' : ''}`}
-            required
-            minlength="2" maxlength="30"
+            required={true}
+            minLength={2}
+            maxLength={30}
+            pattern="[A-Za-zА-Яа-я\s-]{1,32}"
             value={name}
             onChange={handleNameChange}
             onFocus={() => setNameFocused(true)}
@@ -79,14 +94,13 @@ function Register () {
             />
           <span
             className={`register__input-error register__input-error_type_name ${nameFocused ? 'register__input-focused' : ''}`}>{nameError}</span>
-          <label for="email" className="register__label">E-mail</label>
+          <label htmlFor="email" className="register__label">E-mail</label>
           <input
             type="email"
             name="email"
             id="email"
             className={`register__input register__input_type_email ${emailError !== '' ? 'register__input_invalid' : ''}`}
-            required
-            pattern="([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})"
+            required={true}
             value={email}
             onChange={handleEmailChange}
             onFocus={() => setEmailFocused(true)}
@@ -95,13 +109,13 @@ function Register () {
           <span
             className={`register__input-error email-error register__input-error_type_email ${emailFocused ? 'register__input-focused' : ''}`}>{emailError}</span>
 
-          <label for="pass" className="register__label">Пароль</label>
+          <label htmlFor="pass" className="register__label">Пароль</label>
           <input
             type="password"
             name="email"
             id="pass"
             className={`register__input register__input_type_password ${passwordError !== '' ? 'register__input_invalid' : ''}`}
-            required
+            required={true}
             value={password}
             onChange={handlePasswordChange}
             onFocus={() => setPasswordFocused(true)}
@@ -118,6 +132,7 @@ function Register () {
           <p className="register__subtitle">Уже зарегистрированы? <Link to="/signin" className="register__link-navigate">Войти</Link>
             </p>
         </div>
+        {isRegisterError && <>ХУЙ НАРИСОВАН</>}
       </main>
     </section>
 )};

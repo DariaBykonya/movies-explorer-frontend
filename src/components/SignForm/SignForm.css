@@ -1,0 +1,122 @@
+.sign {
+  width: 100%;
+  margin: 40px 0 0;
+  box-sizing: border-box;
+}
+
+.sign__title {
+  margin: 0;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.sign__form {
+  min-height: 396px;
+  margin: 40px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sign__field {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  border: none;
+}
+
+.sign__button {
+  width: 100%;
+  height: 45px;
+  margin-bottom: 16px;
+  padding: 0;
+  background: #4285f4;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.sign__button:hover {
+  opacity: 0.8;
+}
+
+.sign__text {
+  margin: 0;
+  color: #a0a0a0;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+}
+
+.sign__link {
+  margin-left: 6px;
+  text-decoration: none;
+  color: #4285f4;
+}
+
+.sign__error {
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 400;
+  color: #ff4062;
+  height: 18px;
+  opacity: 0;
+  margin: 0;
+  padding-top: 140px;
+  text-align: center;
+}
+
+.sign__error-visible {
+  opacity: 1;
+}
+
+.sign__link:hover {
+  opacity: 0.7;
+}
+
+.sign__button-disabled {
+  border-radius: 3px;
+  background-color: #F8F8F8;
+  color: #C2C2C2;
+}
+
+.sign__button-disabled:hover {
+  cursor: default;
+  opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .sign {
+    min-height: 475px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .sign {
+    margin: 50px 30px 0;
+    min-height: 475px;
+  }
+  .sign__title {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+  }
+  .sign__form {
+    margin: 80px 0 0 0;
+  }
+  .sign__button {
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 245px;
+  }
+  .sign__text {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

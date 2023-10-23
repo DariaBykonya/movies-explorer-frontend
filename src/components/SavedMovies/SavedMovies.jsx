@@ -3,11 +3,11 @@ import SearchForm from "../Movies/SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 // TODO: брать данные из API
-import { movies, savedMovies } from "../../utils/constants.js"
+import { savedMovies } from "../../utils/constants.js"
 
 
 
-function SavedMovies() {
+function SavedMovies({ movies }) {
   return (
     <>
       <Header />

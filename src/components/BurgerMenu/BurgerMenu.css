@@ -72,7 +72,6 @@
 .burger__item_profile {
   flex-grow: 1;
   display: flex;
-  /* align-items: flex-end; */
   margin-top: 593px;
   margin-left: 8px;
   align-items: center;
@@ -115,6 +114,6 @@
   }
 
   .burger__item_profile {
-    margin-top: 424px;
+      margin-top: 424px;
   }
 }

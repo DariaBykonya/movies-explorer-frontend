@@ -1,0 +1,18 @@
+.movies__error {
+  padding: 0 70px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #fff;
+  text-align: center;
+  color: #ee3465;
+}
+
+@media screen and (max-width: 425px) {
+  .movies__error {
+    padding: 0;
+    font-size: 11px;
+    line-height: 13px;
+  }
+  
+}

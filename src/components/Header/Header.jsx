@@ -7,7 +7,7 @@ function Header() {
   const location = useLocation();
 
 // TODO: Исправить
-  const isLogged = true
+  const isLogged = false
 
   return (
     <header
