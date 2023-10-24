@@ -4,16 +4,11 @@ import { useState } from "react";
 
 function SearchForm({ onSubmit, searchText, setSearchText, isShortMovies, setIsShortMovies }) {
 
-  // const [searchText, setSearchText] = useState('')
-  // const [isShortMovies, setIsShortMovies] = useState(false)
   const [errorInputValid, setErrorInputValid] = useState('')
   
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    // if (!evt.target.checkValidity()) { setError('Нужно ввести ключевое слово'); return; }
-    // setError('');
-    // onSubmit && onSubmit(inputRef.current.value, isChecked);
 
     if (searchText === '') {
       setErrorInputValid('Нужно ввести ключевое слово');

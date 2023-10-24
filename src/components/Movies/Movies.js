@@ -6,6 +6,7 @@ import Preloader from '../Preloader/Preloader';
 import { SHORT_MOVIE } from '../../utils/constants';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import { EMPTY_SEARCH_MESSAGE } from '../../utils/constants';
 
 function Movies({
   savedMovies,
@@ -23,13 +24,6 @@ function Movies({
     return moviesToFilter.filter(item => item.duration < SHORT_MOVIE);
   };
 
-  const onFilterClick = () => {
-    const newLocalStorageFilter = { ...localStorageFilter };
-    newLocalStorageFilter.filterIsOn = !newLocalStorageFilter.filterIsOn;
-    setLocalStorageFilter(newLocalStorageFilter);
-    localStorage.setItem('shortFilmFilter', newLocalStorageFilter.filterIsOn);
-  };
-
   useEffect(() => {
     setLoadingError('');
     const queryFilter = localStorage.getItem('searchText');
@@ -41,14 +35,18 @@ function Movies({
     if (shortFilmFilter) {
       storageFilter.filterIsOn = shortFilmFilter === 'true' ? true : false;
     }
+    
     setLocalStorageFilter(storageFilter);
+    if (localStorage.getItem('filteredMovies') === "[]") {
+        setLoadingError(EMPTY_SEARCH_MESSAGE)
+      }
   }, []);
 
   function handleUpdateLocalStorageFilter(storageFilter) {
     setLocalStorageFilter(storageFilter);
-    if (storageFilter.searchText) localStorage.setItem('searchText', storageFilter.searchText);
-    if (storageFilter.shortFilmFilter)
-      localStorage.setItem('shortFilmFilter', storageFilter.shortFilmFilter);
+    if (storageFilter.searchText !== undefined) localStorage.setItem('searchText', storageFilter.searchText);
+    if (storageFilter.filterIsOn !== undefined)
+      localStorage.setItem('shortFilmFilter', storageFilter.filterIsOn);
   }
 
   return (
@@ -56,12 +54,12 @@ function Movies({
       <Header />
       <main className="movie">
         <SearchForm
-          onFilterClick={onFilterClick}
           search={searchMovies}
           setIsFirstLoad={setIsFirstLoad}
           localStorageFilter={localStorageFilter}
           setLocalStorageFilter={handleUpdateLocalStorageFilter}
           shortFilmFilterOn={localStorageFilter.filterIsOn}
+          onFilterClick={()=>{}}
         />
         {isLoader && <Preloader />}
 

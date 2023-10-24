@@ -4,21 +4,21 @@ import MoreBtn from './MoreBtn/MoreBtn';
 import { useEffect, useState } from 'react';
 import { EMPTY_SEARCH_MESSAGE } from '../../utils/constants';
 import { useLocation } from 'react-router-dom';
+import { MAX_CARDS_LARGE_SCREEN, MAX_CARDS_MEDIUM_SCREEN, MAX_CARDS_SMALL_SCREEN, CARDS_TO_ADD_LARGE_SCREEN, CARDS_TO_ADD_MEDIUM_SCREEN, CARDS_TO_ADD_SMALL_SCREEN, SCREEN_WIDTH_LARGE, SCREEN_WIDTH_THREE_CARDS, SCREEN_WIDTH_MEDIUM } from '../../utils/constants.js'
 
-function MoviesCardList({ movies, savedMovies, isFirstLoad, setLoadingError, setSavedMovies }) {
+function MoviesCardList({ movies = [], savedMovies, isFirstLoad, setLoadingError, setSavedMovies }) {
   const location = useLocation();
 
   const [visibleCards, setVisibleCards] = useState(() => {
     const windowWidth = window.innerWidth;
-    if (windowWidth >= 1280) {
-      return 16;
-    } else if (windowWidth >= 768) {
-      return 8;
+    if (windowWidth >= SCREEN_WIDTH_LARGE) {
+      return MAX_CARDS_LARGE_SCREEN;
+    } else if (windowWidth >= SCREEN_WIDTH_MEDIUM) {
+      return MAX_CARDS_MEDIUM_SCREEN;
     } else {
-      return 5;
+      return MAX_CARDS_SMALL_SCREEN;
     }
   });
-
   const [visibleMoreButton, setVisibleMoreButton] = useState(false);
   const totalCards = movies.length;
 
@@ -27,12 +27,12 @@ function MoviesCardList({ movies, savedMovies, isFirstLoad, setLoadingError, set
       const windowWidth = window.innerWidth;
       if (location.pathname === '/saved-movies') {
         setVisibleCards(savedMovies.length);
-      } else if (windowWidth >= 1280) {
-        setVisibleCards(16);
-      } else if (windowWidth >= 768) {
-        setVisibleCards(8);
+      } else if (windowWidth >= SCREEN_WIDTH_LARGE) {
+        setVisibleCards(MAX_CARDS_LARGE_SCREEN);
+      } else if (windowWidth >= SCREEN_WIDTH_MEDIUM) {
+        setVisibleCards(MAX_CARDS_MEDIUM_SCREEN);
       } else {
-        setVisibleCards(5);
+        setVisibleCards(MAX_CARDS_SMALL_SCREEN);
       }
     };
 
@@ -54,29 +54,34 @@ function MoviesCardList({ movies, savedMovies, isFirstLoad, setLoadingError, set
 
   const loadMoreCards = () => {
     const windowWidth = window.innerWidth;
-    if (windowWidth >= 1280) {
-      setVisibleCards(visCards => visCards + 4);
-    } else if (windowWidth >= 768) {
-      setVisibleCards(visCards => visCards + 2);
+    if (windowWidth >= SCREEN_WIDTH_LARGE) {
+      setVisibleCards(visCards => visCards + CARDS_TO_ADD_LARGE_SCREEN);
+    } else if (windowWidth >= SCREEN_WIDTH_THREE_CARDS) {
+      setVisibleCards(visCards => visCards + CARDS_TO_ADD_MEDIUM_SCREEN);  
     } else {
-      setVisibleCards(visCards => visCards + 2);
+      setVisibleCards(visCards => visCards + CARDS_TO_ADD_SMALL_SCREEN);
     }
   };
+
+  useEffect(()=>{
+    const queryFilter = localStorage.getItem('searchText');
+  
+    if(
+        ((queryFilter !== '' || !isFirstLoad ) 
+          && movies.length <= 0 
+          && (!(location.pathname === '/saved-movies' 
+          && savedMovies.length === 0))
+        ) || (location.pathname === '/saved-movies' 
+            && savedMovies.length === 0 
+            && !isFirstLoad)) setLoadingError(EMPTY_SEARCH_MESSAGE)
+    else {
+      setLoadingError("")
+    }
+  },[movies]);
+
   return (
     <section>
-      {isFirstLoad && movies.length > 0 && (
-        <ul className="movies-list">
-          {movies.slice(0, visibleCards).map(movie => (
-            <MoviesCard
-              key={movie.id}
-              movie={movie}
-              setSavedMovies={setSavedMovies}
-              savedMovies={savedMovies}
-            />
-          ))}
-        </ul>
-      )}
-      {!isFirstLoad && movies.length > 0 && (
+      {movies.length > 0 && (
         <ul className="movies-list">
           {movies.slice(0, visibleCards).map(movie => (
             <MoviesCard
@@ -100,7 +105,6 @@ function MoviesCardList({ movies, savedMovies, isFirstLoad, setLoadingError, set
           ))}
         </ul>
       )}
-      {!isFirstLoad && movies.length <= 0 && setLoadingError(EMPTY_SEARCH_MESSAGE)}
       {location.pathname === '/movies' && visibleMoreButton && <MoreBtn onClick={loadMoreCards} />}
     </section>
   );

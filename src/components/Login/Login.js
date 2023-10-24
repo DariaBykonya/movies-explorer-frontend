@@ -53,6 +53,7 @@ function Login({ onLogin }) {
               setValue={setEmail}
               setError={setValidationErrors}
               isRequired={true}
+              pattern={"^\\S+@\\S+\\.\\S+$"}
               errors={validationErrors}
               setIsValid={setIsValid}
             />

@@ -35,7 +35,7 @@ function Navigation() {
               </NavLink>
             </nav>
           </div>
-          <a href="/profile" className="account">
+          <NavLink to="/profile" className="account">
             <p className="account__title">Аккаунт</p>
             <div
               className={`account__icon-background ${
@@ -48,7 +48,7 @@ function Navigation() {
                 alt="картинка аккаунта"
               />
             </div>
-          </a>
+          </NavLink>
           <button
             className="burger-btn"
             onClick={toggleBurgerMenu}

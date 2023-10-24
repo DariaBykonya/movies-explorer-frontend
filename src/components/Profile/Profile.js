@@ -81,6 +81,7 @@ function Profile({
               onChange={handleChange}
               autoComplete="off"
               disabled={!isEdit}
+              pattern={"^\\S+@\\S+\\.\\S+$"}
             />
           </label>
           <span className="profile__form-error">{errors.email}</span>
@@ -118,10 +119,10 @@ function Profile({
                 <button
                   type="button"
                   className={`profile__button-edit ${
-                    hasChanges ? "" : "profile__button-edit-disabled"
+                    hasChanges && isValid ? "" : "profile__button-edit-disabled"
                   }`}
                   onClick={saveProfile}
-                  disabled={!hasChanges || !isValid}
+                  disabled={!hasChanges || !isValid }
                 >
                   Сохранить
                 </button>

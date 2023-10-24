@@ -66,6 +66,7 @@ function Register({ onRegister }) {
               id="signup-email"
               type="email"
               name="email"
+              pattern={"^\\S+@\\S+\\.\\S+$"}
               label="E-mail"
               inputValue={email}
               setValue={setEmail}

@@ -41,16 +41,14 @@ function App() {
           getSavedMovies();
         })
         .catch(err => {
-          console.log(err);
           setLoggedIn(false);
           localStorage.setItem('token', '');
         });
     }
-    setLoadingError('');
     getFiltredMoviesFromStorage();
+    const allMoviesLocal = JSON.parse(localStorage.getItem('allMovies'));
+    if (allMoviesLocal) setAllMovies(allMoviesLocal);
   }, []);
-
-  useEffect(() => {}, [filterMovies]);
 
   function login(email, password) {
     return mainApi.login(email, password).then(res => {
@@ -82,7 +80,9 @@ function App() {
         }, 2000);
       })
       .catch(err => {
-        console.log(err);
+        mainApi.getMe().then(res => {
+          setCurrentUser({ email: res.email, name: res.name });
+        });
         setEditIsFailed(true);
         setTimeout(() => {
           setEditIsFailed(false);
@@ -105,25 +105,34 @@ function App() {
   }
 
   const getAllMoviesData = () => {
-    getMovies()
-      .then(data => {
-        const allMoviesData = data.map(item => {
-          const imageURL = item.image ? item.image.url : '';
-          return {
-            ...item,
-            image: `https://api.nomoreparties.co${imageURL}`,
-            trailer: item.trailerLink
-          };
-        });
-
-        localStorage.setItem('allMovies', JSON.stringify(allMoviesData));
-        setAllMovies(allMoviesData);
-      })
-      .catch(() => {
-        localStorage.removeItem('allMovies');
-        setLoadingError(ERROR_LOAD_MESSAGE);
+    return getMovies()
+    .then(data => {
+      const allMoviesData = data.map(item => {
+        const imageURL = item.image ? item.image.url : '';
+        return {
+          ...item,
+          image: `https://api.nomoreparties.co${imageURL}`,
+          trailer: item.trailerLink
+        };
       });
+      
+      localStorage.setItem('allMovies', JSON.stringify(allMoviesData));
+      setAllMovies(allMoviesData);
+    })
+    .catch(() => {
+      localStorage.removeItem('allMovies');
+      setLoadingError(ERROR_LOAD_MESSAGE);
+    });    
   };
+
+  const getAllMovies =  () => {
+    const allMoviesLocal = JSON.parse(localStorage.getItem('allMovies'));
+    if (allMoviesLocal) {
+      setAllMovies(allMoviesLocal);
+    } else {
+       getAllMoviesData();
+    }
+  }
 
   const getSavedMovies = () => {
     mainApi
@@ -140,24 +149,14 @@ function App() {
       });
   };
 
-  useEffect(() => {
-    const allMoviesLocal = JSON.parse(localStorage.getItem('allMovies'));
-    if (loggedIn) {
-      if (allMoviesLocal) {
-        setAllMovies(allMoviesLocal);
-      } else {
-        getAllMoviesData();
-      }
-      const allSavedMoviesLocal = JSON.parse(localStorage.getItem('savedMovies'));
-      if (allSavedMoviesLocal) {
-        setSavedMovies(allSavedMoviesLocal);
-      } else {
-        getSavedMovies();
-      }
-    }
-  }, [loggedIn]);
-
+  const setSavedMoviesProxy = (prop)=>{
+    localStorage.setItem('savedMovies', JSON.stringify(prop));
+    setSavedMovies(prop)
+  }
   const searchFilter = (data, searchText) => {
+    setIsLoader(true)
+    getAllMovies()
+
     if (searchText) {
       const searchMoviesArr = data.filter(item => {
         return item.nameRU.toLowerCase().includes(searchText.toLowerCase());
@@ -167,27 +166,27 @@ function App() {
       } else {
         setLoadingError('');
       }
+
+      setIsLoader(false)
+
       return searchMoviesArr;
     }
+    setIsLoader(false)
     return [];
   };
 
   const searchSavedMovies = searchText => {
     setIsLoader(true);
-    setTimeout(() => {
       setFilterSavedMovies(searchFilter(savedMovies, searchText));
       setIsLoader(false);
-    }, 600);
   };
 
   const searchMovies = searchText => {
     setIsLoader(true);
-    setTimeout(() => {
       const filteredMovies = searchFilter(allMovies, searchText);
       setFilterMovies(searchFilter(allMovies, searchText));
       setIsLoader(false);
       saveFilteredMoviesToStorage(filteredMovies);
-    }, 600);
   };
 
   function getFiltredMoviesFromStorage() {
@@ -251,7 +250,7 @@ function App() {
                       setLoadingError={setLoadingError}
                       isFirstLoad={isFirstLoad}
                       setIsFirstLoad={setIsFirstLoad}
-                      setSavedMovies={setSavedMovies}
+                      setSavedMovies={setSavedMoviesProxy}
                     />
                   </ProtectedRoute>
                 }
@@ -264,12 +263,12 @@ function App() {
                       isLoader={isLoader}
                       loadingError={loadingError}
                       savedMovies={savedMovies}
-                      movies={filterSavedMovies}
-                      searchMovies={searchSavedMovies}
                       setLoadingError={setLoadingError}
                       isFirstLoad={isFirstLoadSavedMovies}
                       setIsFirstLoad={setIsFirstLoadSavedMovies}
-                      setSavedMovies={setSavedMovies}
+                      setSavedMovies={setSavedMoviesProxy}
+                      setIsLoader={setIsLoader}
+                      searchFilter={searchFilter}
                     />
                   </ProtectedRoute>
                 }

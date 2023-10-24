@@ -4,20 +4,24 @@ import mainApi from '../../utils/MainApi';
 
 function MoviesCard({ movie, savedMovies, setSavedMovies }) {
   const setLike = () => {
+    if(savedMovies.find((item)=>item._id === movie._id) !== undefined) {
+        return;
+    }
     mainApi
       .postMovie(movie)
       .then(res => {
         setSavedMovies([res.movie, ...savedMovies]);
       })
       .catch(err => console.log(err));
-    mainApi.getSavedMovies();
+
   };
 
   const deleteLike = () => {
     const savedMovie = savedMovies.find(m => m.movieId === movie.id || m.movieId === movie.movieId);
     if (!savedMovie) return;
-    mainApi.deleteMovie(savedMovie._id);
     setSavedMovies(savedMovies.filter(m => m._id !== savedMovie._id));
+    mainApi.deleteMovie(savedMovie._id);
+
   };
 
   const isLiked = () => {

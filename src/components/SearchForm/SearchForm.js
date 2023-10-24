@@ -5,12 +5,12 @@ import useFormWithValidation from '../../hooks/useFormWithValidation';
 
 function SearchForm({
   search,
-  onFilterClick,
   isLoading,
   setIsFirstLoad,
   localStorageFilter,
   setLocalStorageFilter,
-  shortFilmFilterOn
+  shortFilmFilterOn,
+  onFilterClick
 }) {
   const formWithValidation = useFormWithValidation();
   const { searchText } = formWithValidation.values;
@@ -33,6 +33,14 @@ function SearchForm({
     }
   }
 
+  const updateLocalStorage = () => {
+    if(!localStorageFilter) return;
+    const newLocalStorageFilter = { ...localStorageFilter };
+    newLocalStorageFilter.filterIsOn = !newLocalStorageFilter.filterIsOn;
+     newLocalStorageFilter.searchText = searchText;
+    setLocalStorageFilter(newLocalStorageFilter);
+  };
+
   function onFilterSubmit(evt) {
     if (!searchText) {
       setError('Нужно ввести ключевое слово');
@@ -40,7 +48,9 @@ function SearchForm({
       setError('');
       setIsFirstLoad(false);
       search(searchText);
-      onFilterClick(evt);
+      updateLocalStorage(evt);
+    onFilterClick(evt);
+
     }
   }
 
