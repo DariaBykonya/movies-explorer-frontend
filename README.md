@@ -1,5 +1,5 @@
 # Movies-explorer-frontent
-Ссылка на пул реквест: [https://github.com/DariaBykonya/movies-explorer-frontend/pull/3](https://github.com/DariaBykonya/movies-explorer-frontend/pull/3)
+Ссылка на пул реквест: [https://github.com/DariaBykonya/movies-explorer-frontend/pull/3](ccskrf)
 
 *Описание*
 Сервис, в котором можно найти фильмы по запросу и сохранить в личном кабинете.
