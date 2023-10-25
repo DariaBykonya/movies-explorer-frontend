@@ -104,8 +104,8 @@ function App() {
     navigate('/');
   }
 
-  const getAllMoviesData = () => {
-    return getMovies()
+  async function getAllMoviesData() {
+    return await getMovies()
     .then(data => {
       const allMoviesData = data.map(item => {
         const imageURL = item.image ? item.image.url : '';
@@ -125,12 +125,12 @@ function App() {
     });    
   };
 
-  const getAllMovies =  () => {
+  async function getAllMovies() {
     const allMoviesLocal = JSON.parse(localStorage.getItem('allMovies'));
     if (allMoviesLocal) {
       setAllMovies(allMoviesLocal);
     } else {
-       getAllMoviesData();
+       await getAllMoviesData();
     }
   }
 
@@ -155,8 +155,6 @@ function App() {
   }
   const searchFilter = (data, searchText) => {
     setIsLoader(true)
-    getAllMovies()
-
     if (searchText) {
       const searchMoviesArr = data.filter(item => {
         return item.nameRU.toLowerCase().includes(searchText.toLowerCase());
@@ -166,27 +164,21 @@ function App() {
       } else {
         setLoadingError('');
       }
-
       setIsLoader(false)
-
       return searchMoviesArr;
     }
     setIsLoader(false)
     return [];
   };
 
-  const searchSavedMovies = searchText => {
-    setIsLoader(true);
-      setFilterSavedMovies(searchFilter(savedMovies, searchText));
-      setIsLoader(false);
-  };
 
-  const searchMovies = searchText => {
+  async function searchMovies(searchText) {
     setIsLoader(true);
+      await getAllMovies()
       const filteredMovies = searchFilter(allMovies, searchText);
       setFilterMovies(searchFilter(allMovies, searchText));
-      setIsLoader(false);
       saveFilteredMoviesToStorage(filteredMovies);
+      setIsLoader(false);
   };
 
   function getFiltredMoviesFromStorage() {

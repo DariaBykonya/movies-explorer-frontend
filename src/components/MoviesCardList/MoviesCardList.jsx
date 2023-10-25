@@ -4,7 +4,7 @@ import MoreBtn from './MoreBtn/MoreBtn';
 import { useEffect, useState } from 'react';
 import { EMPTY_SEARCH_MESSAGE } from '../../utils/constants';
 import { useLocation } from 'react-router-dom';
-import { MAX_CARDS_LARGE_SCREEN, MAX_CARDS_MEDIUM_SCREEN, MAX_CARDS_SMALL_SCREEN, CARDS_TO_ADD_LARGE_SCREEN, CARDS_TO_ADD_MEDIUM_SCREEN, CARDS_TO_ADD_SMALL_SCREEN, SCREEN_WIDTH_LARGE, SCREEN_WIDTH_THREE_CARDS, SCREEN_WIDTH_MEDIUM } from '../../utils/constants.js'
+import { MAX_CARDS_LARGE_SCREEN, MAX_CARDS_THREE_SCREEN, MAX_CARDS_MEDIUM_SCREEN, MAX_CARDS_SMALL_SCREEN, CARDS_TO_ADD_LARGE_SCREEN, SCREEN_WIDTH_THREE_CARDS, CARDS_TO_ADD_MEDIUM_SCREEN, CARDS_TO_ADD_SMALL_SCREEN, SCREEN_WIDTH_LARGE, SCREEN_WIDTH_MEDIUM } from '../../utils/constants.js'
 
 function MoviesCardList({ movies = [], savedMovies, isFirstLoad, setLoadingError, setSavedMovies }) {
   const location = useLocation();
@@ -13,6 +13,8 @@ function MoviesCardList({ movies = [], savedMovies, isFirstLoad, setLoadingError
     const windowWidth = window.innerWidth;
     if (windowWidth >= SCREEN_WIDTH_LARGE) {
       return MAX_CARDS_LARGE_SCREEN;
+    } else if(windowWidth >= SCREEN_WIDTH_THREE_CARDS) {
+      return MAX_CARDS_THREE_SCREEN;
     } else if (windowWidth >= SCREEN_WIDTH_MEDIUM) {
       return MAX_CARDS_MEDIUM_SCREEN;
     } else {
@@ -29,8 +31,10 @@ function MoviesCardList({ movies = [], savedMovies, isFirstLoad, setLoadingError
         setVisibleCards(savedMovies.length);
       } else if (windowWidth >= SCREEN_WIDTH_LARGE) {
         setVisibleCards(MAX_CARDS_LARGE_SCREEN);
+      } else if(windowWidth >= SCREEN_WIDTH_THREE_CARDS) {
+        setVisibleCards(MAX_CARDS_THREE_SCREEN);
       } else if (windowWidth >= SCREEN_WIDTH_MEDIUM) {
-        setVisibleCards(MAX_CARDS_MEDIUM_SCREEN);
+        setVisibleCards(MAX_CARDS_MEDIUM_SCREEN)
       } else {
         setVisibleCards(MAX_CARDS_SMALL_SCREEN);
       }
@@ -54,13 +58,13 @@ function MoviesCardList({ movies = [], savedMovies, isFirstLoad, setLoadingError
 
   const loadMoreCards = () => {
     const windowWidth = window.innerWidth;
-    if (windowWidth >= SCREEN_WIDTH_LARGE) {
-      setVisibleCards(visCards => visCards + CARDS_TO_ADD_LARGE_SCREEN);
-    } else if (windowWidth >= SCREEN_WIDTH_THREE_CARDS) {
-      setVisibleCards(visCards => visCards + CARDS_TO_ADD_MEDIUM_SCREEN);  
-    } else {
-      setVisibleCards(visCards => visCards + CARDS_TO_ADD_SMALL_SCREEN);
-    }
+      if(windowWidth >= SCREEN_WIDTH_LARGE) {
+        setVisibleCards(visCards => visCards + CARDS_TO_ADD_LARGE_SCREEN)
+      } else if(windowWidth >= SCREEN_WIDTH_THREE_CARDS) {
+        setVisibleCards(visCards => visCards + CARDS_TO_ADD_MEDIUM_SCREEN)
+      } else {
+        setVisibleCards(visCards => visCards + CARDS_TO_ADD_SMALL_SCREEN)
+      }
   };
 
   useEffect(()=>{
