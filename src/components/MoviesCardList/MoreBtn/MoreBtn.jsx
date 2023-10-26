@@ -1,9 +1,11 @@
-import "./MoreBtn.css"
+import "./MoreBtn.css";
 
-function MoreBtn() {
+function MoreBtn({ onClick }) {
   return (
-    <button className="more-btn">Ещё</button>
-  )
+    <button className="more-btn" onClick={onClick}>
+      Ещё
+    </button>
+  );
 }
 
-export default MoreBtn
+export default MoreBtn;

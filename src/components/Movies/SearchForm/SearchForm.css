@@ -87,6 +87,11 @@
   margin: 10px 70px 10px;
 }
 
+.search__error-message {
+  margin: 0 auto;
+  text-align: center;
+}
+
 @media screen and (max-width: 920px) {
   .search {
     margin: 80px 30px;

@@ -1,17 +1,26 @@
 .movies-list {
-  padding: 70px 70px 10px;
+  padding: 73px 70px 10px;
   display: grid;
-  gap: 30px 20px;
+  gap: 27px 20px;
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   list-style: none;
   margin: 0;
+  justify-content: center; /* Горизонтальное центрирование */
+  align-items: center; /* Вертикальное центрирование */
+
+}
+
+.movies-list__found-nothing-text {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  text-align: center;
 }
 
 @media screen and (max-width: 920px) {
   .movies-list {
     padding-left: 30px;
     padding-right: 30px;
-    gap: 16px 30px;
+    gap: 19px 30px;
   }
 }
 

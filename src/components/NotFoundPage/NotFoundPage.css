@@ -43,7 +43,16 @@
   opacity: 0.7;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 920px) {
+  .error-page {
+    padding-top: 406px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .error-page {
+    padding-top: 330px;
+  }
   .error-page__title {
     font-size: 80px;
   }

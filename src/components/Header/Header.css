@@ -1,25 +1,33 @@
 .header {
-  margin: 0 auto;
+  width: 100%;
+  height: 74px;
+  padding: 0 70px;
   display: flex;
+  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
-  padding: 18px 70px; /* Отступы сверху и снизу, а также слева и справа */
   background-color: #202020;
-  align-items: center; /* Выравнивание по центру вертикально */
+  box-sizing: border-box;
 }
 
 .header_main {
   background-color: #073042;
 }
 
-@media screen and (max-width: 920px) {
-  .header{
-    padding: 15px 30px; /* Отступы сверху и снизу, а также слева и справа */
+.header__logo {
+  width: 38px;
+  height: 38px;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 0 30px;
   }
 }
 
-@media screen and (max-width: 590px) {
-  .header{
-    padding: 15px 14px; /* Отступы сверху и снизу, а также слева и справа */
-    align-items: center;
+@media screen and (max-width: 425px) {
+  .header {
+    padding: 0 14px;
   }
 }

@@ -1,0 +1,44 @@
+.sign__label {
+  margin-bottom: 4px;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #8b8b8b;
+}
+
+.sign__input {
+  padding: 0 0 10px 0;
+  padding-bottom: 10px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-overflow: ellipsis;
+  border: none;
+  border-bottom: 1px solid #424242;
+  white-space: nowrap;
+  overflow: hidden;
+  background: #202020;
+  color: #fff;
+}
+
+.sign__input-error {
+  margin-top: 8px;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #ff4062;
+  height: 21px;
+}
+
+.sign__input:last-child {
+  margin: 0;
+}
+
+.sign__input:focus {
+  outline: none;
+  border-bottom: 1px solid #4285F4;
+}
+
+.sign__input_invalid {
+  color: #ff4062;
+}
