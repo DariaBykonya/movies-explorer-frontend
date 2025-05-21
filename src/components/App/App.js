@@ -14,7 +14,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import ProtectedRouteAfterSign from '../ProtectedRouteAfterSign/ProtectedRouteAfterSign';
 import mainApi from '../../utils/MainApi';
 import { getMovies } from '../../utils/MoviesApi';
-import { ERROR_LOAD_MESSAGE, EMPTY_SEARCH_MESSAGE } from '../../utils/constants';
+import { ERROR_LOAD_MESSAGE, EMPTY_SEARCH_MESSAGE, URL_MOVIE_IMAGE } from '../../utils/constants';
 
 function App() {
   const navigate = useNavigate();
@@ -86,7 +86,7 @@ function App() {
         setEditIsFailed(true);
         setTimeout(() => {
           setEditIsFailed(false);
-        }, 3000);
+        }, 3001);
       });
   };
 
@@ -105,13 +105,13 @@ function App() {
   }
 
   async function getAllMoviesData() {
-    return await getMovies()
+    await getMovies()
     .then(data => {
       const allMoviesData = data.map(item => {
         const imageURL = item.image ? item.image.url : '';
         return {
           ...item,
-          image: `https://api.nomoreparties.co${imageURL}`,
+          image: `${URL_MOVIE_IMAGE}${imageURL}`,
           trailer: item.trailerLink
         };
       });
@@ -237,7 +237,7 @@ function App() {
                       isLoader={isLoader}
                       loadingError={loadingError}
                       savedMovies={savedMovies}
-                      movies={filterMovies}
+                      movies={filterMovies.length === 0 ? allMovies : filterMovies}
                       searchMovies={searchMovies}
                       setLoadingError={setLoadingError}
                       isFirstLoad={isFirstLoad}

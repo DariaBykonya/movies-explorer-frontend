@@ -11,7 +11,7 @@ function AboutMe() {
         <div className="about-me__information">
           <div className="about-me__information-container">
             <h2 className="about-me__name">Дарья</h2>
-            <p className="about-me__subtitle">Фронтенд-разработчик, 22 года</p>
+            <p className="about-me__subtitle">Фронтенд-разработчик, 23 года</p>
             <p className="about-me__bio">
             Я&nbsp;родилась в&nbsp;Москве, закончила дефектологический факультет МПГУ. Я&nbsp;люблю слушать музыку, играть в&nbsp;волейбол, а&nbsp;ещё увлекаюсь йогой. Недавно начала кодить. С&nbsp;2022 года работала учителем-дефектологом в&nbsp;школе для слабослышащих. После того, как пройду курс по&nbsp;веб-разработке, начну искать работу по&nbsp;этой специальности.
             </p>
