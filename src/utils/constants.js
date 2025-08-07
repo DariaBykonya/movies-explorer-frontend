@@ -1,4 +1,4 @@
-export const URL_BACKEND = "http://localhost:3001";
+export const URL_BACKEND = "https://darchdev.com/api";
 export const URL_DATA_MOVIES = "https://api.nomoreparties.co/beatfilm-movies";
 export const URL_MOVIE_IMAGE = "https://api.nomoreparties.co";
 
