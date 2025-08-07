@@ -20,7 +20,7 @@ function BurgerMenu ({ isOpen, onClose }) {
             <li className=""><NavLink onClick={onClose} className={makeLinkActive} to="/movies">Фильмы</NavLink></li>
             <li className=""><NavLink onClick={onClose} className={makeLinkActive} to="/saved-movies">Сохранённые фильмы</NavLink></li>
           </ul>
-            <li className="burger__item_profile"><NavLink onClick={onClose} className={makeProfileLinkActive} to="/profile">Аккаунт
+            <li className="burger__item_profile"><NavLink onClick={onClose} className={makeProfileLinkActive} to="/profile">Account
               </NavLink>
             </li>
             <button className="burger__close" onClick={onClose}></button>

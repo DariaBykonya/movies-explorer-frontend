@@ -28,15 +28,15 @@ function Navigation() {
           <div className="navigation">
             <nav className="navigation__links">
               <NavLink className="navigation__link-title" to="/movies">
-                Фильмы
+                Movies
               </NavLink>
               <NavLink className="navigation__link-title" to="/saved-movies">
-                Сохранённые фильмы
+                Saved movies
               </NavLink>
             </nav>
           </div>
           <NavLink to="/profile" className="account">
-            <p className="account__title">Аккаунт</p>
+            <p className="account__title">Account</p>
             <div
               className={`account__icon-background ${
                 location.pathname === "/" ? "account__icon-background-home" : ""
@@ -59,10 +59,10 @@ function Navigation() {
         <>
           <div className="navigation__auth-link">
             <Link className="navigation__signup" to="/signup">
-              Регистрация
+              Register
             </Link>
             <Link className="navigation__signin" to="/signin">
-              Войти
+              Login
             </Link>
           </div>
         </>

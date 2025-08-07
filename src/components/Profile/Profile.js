@@ -48,10 +48,10 @@ function Profile({
     <>
       <Header />
       <main className="profile">
-        <h2 className="profile__title">Привет, {currentUser.name}!</h2>
+        <h2 className="profile__title">Hello, {currentUser.name}!</h2>
         <form className="profile__form" onSubmit={handleSubmit}>
           <label className="profile__form-label" htmlFor="name">
-            Имя
+            Name
             <input
               className="profile__form-input"
               id="name"
@@ -60,7 +60,7 @@ function Profile({
               maxLength="30"
               name="name"
               type="text"
-              placeholder="Имя"
+              placeholder="Name"
               pattern={"^[\\-A-Za-zА-Яа-я\\s]*$"}
               value={values.name || ""}
               onChange={handleChange}
@@ -104,14 +104,14 @@ function Profile({
                   className="profile__form-submit"
                   onClick={edit}
                 >
-                  Редактировать
+                  Edit
                 </button>
                 <button
                   type="button"
                   className="profile__button_logout"
                   onClick={onSignOut}
                 >
-                  Выйти из аккаунта
+                  logout
                 </button>
               </>
             ) : (

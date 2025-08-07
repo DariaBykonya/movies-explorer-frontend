@@ -35,11 +35,11 @@ function Login({ onLogin }) {
           <Preloader />
         ) : (
           <SignForm
-            title="Рады видеть!"
-            submitBtnText="Войти"
+            title="Nice to see you!"
+            submitBtnText="Login"
             linkTo="/signup"
-            text="Ещё не зарегистрированы?"
-            textLink="Регистрация"
+            text="Not registered yet?"
+            textLink="Register"
             handleSubmit={handleLogin}
             isError={isError}
             isDisabled={!isValid}
@@ -61,7 +61,7 @@ function Login({ onLogin }) {
               id="signup-password"
               type="password"
               name="password"
-              label="Пароль"
+              label="Password"
               inputValue={password}
               setValue={setPassword}
               setError={setValidationErrors}

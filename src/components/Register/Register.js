@@ -39,11 +39,11 @@ function Register({ onRegister }) {
           <Preloader />
         ) : (
           <SignForm
-            title="Добро пожаловать!"
-            submitBtnText="Зарегистрироваться"
+            title="Welcome!"
+            submitBtnText="Register"
             linkTo="/signin"
-            text="Уже зарегистрированы?"
-            textLink="Войти"
+            text="Already registered?"
+            textLink="Login"
             handleSubmit={handleSubmitRegister}
             isError={isError}
             isDisabled={!isValid}
@@ -52,7 +52,7 @@ function Register({ onRegister }) {
               id="signup-name"
               type="name"
               name="name"
-              label="Имя"
+              label="Name"
               inputValue={name}
               setValue={setName}
               setError={setValidationErrors}
@@ -79,7 +79,7 @@ function Register({ onRegister }) {
               id="signup-password"
               type="password"
               name="password"
-              label="Пароль"
+              label="Password"
               inputValue={password}
               minLength="8"
               setValue={setPassword}
