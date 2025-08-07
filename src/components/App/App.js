@@ -45,9 +45,28 @@ function App() {
           localStorage.setItem('token', '');
         });
     }
-    getFiltredMoviesFromStorage();
+    
     const allMoviesLocal = JSON.parse(localStorage.getItem('allMovies'));
-    if (allMoviesLocal) setAllMovies(allMoviesLocal);
+    
+    if (allMoviesLocal) {
+      setAllMovies(allMoviesLocal);
+      
+      const searchText = localStorage.getItem('searchText');
+      const filteredMoviesJSON = localStorage.getItem('filteredMovies');
+      
+      if (searchText && filteredMoviesJSON) {
+        getFiltredMoviesFromStorage();
+      } else {
+        setFilterMovies(allMoviesLocal);
+      }
+    } else {
+      getAllMoviesData().then(() => {
+        const loadedMovies = JSON.parse(localStorage.getItem('allMovies'));
+        if (loadedMovies && !localStorage.getItem('searchText')) {
+          setFilterMovies(loadedMovies);
+        }
+      });
+    }
   }, []);
 
   function login(email, password) {
@@ -86,7 +105,7 @@ function App() {
         setEditIsFailed(true);
         setTimeout(() => {
           setEditIsFailed(false);
-        }, 3001);
+        }, 3000);
       });
   };
 
@@ -105,7 +124,7 @@ function App() {
   }
 
   async function getAllMoviesData() {
-    await getMovies()
+    return getMovies()
     .then(data => {
       const allMoviesData = data.map(item => {
         const imageURL = item.image ? item.image.url : '';
@@ -118,21 +137,15 @@ function App() {
       
       localStorage.setItem('allMovies', JSON.stringify(allMoviesData));
       setAllMovies(allMoviesData);
+      return allMoviesData;
     })
     .catch(() => {
       localStorage.removeItem('allMovies');
       setLoadingError(ERROR_LOAD_MESSAGE);
+      return [];
     });    
   };
 
-  async function getAllMovies() {
-    const allMoviesLocal = JSON.parse(localStorage.getItem('allMovies'));
-    if (allMoviesLocal) {
-      setAllMovies(allMoviesLocal);
-    } else {
-       await getAllMoviesData();
-    }
-  }
 
   const getSavedMovies = () => {
     mainApi
@@ -174,11 +187,26 @@ function App() {
 
   async function searchMovies(searchText) {
     setIsLoader(true);
-      await getAllMovies()
-      const filteredMovies = searchFilter(allMovies, searchText);
-      setFilterMovies(searchFilter(allMovies, searchText));
-      saveFilteredMoviesToStorage(filteredMovies);
-      setIsLoader(false);
+    setLoadingError('');
+    
+    let moviesData = allMovies;
+    
+    // Если allMovies пустой, загружаем данные
+    if (moviesData.length === 0) {
+      const allMoviesLocal = JSON.parse(localStorage.getItem('allMovies'));
+      if (allMoviesLocal) {
+        moviesData = allMoviesLocal;
+        setAllMovies(allMoviesLocal);
+      } else {
+        await getAllMoviesData();
+        moviesData = JSON.parse(localStorage.getItem('allMovies')) || [];
+      }
+    }
+    
+    const filteredMovies = searchFilter(moviesData, searchText);
+    setFilterMovies(filteredMovies);
+    saveFilteredMoviesToStorage(filteredMovies);
+    setIsLoader(false);
   };
 
   function getFiltredMoviesFromStorage() {
@@ -237,7 +265,7 @@ function App() {
                       isLoader={isLoader}
                       loadingError={loadingError}
                       savedMovies={savedMovies}
-                      movies={filterMovies.length === 0 ? allMovies : filterMovies}
+                      movies={filterMovies.length === 0 && !localStorage.getItem('searchText') ? allMovies : filterMovies}
                       searchMovies={searchMovies}
                       setLoadingError={setLoadingError}
                       isFirstLoad={isFirstLoad}

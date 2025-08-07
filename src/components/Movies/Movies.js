@@ -6,7 +6,6 @@ import Preloader from '../Preloader/Preloader';
 import { SHORT_MOVIE } from '../../utils/constants';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import { EMPTY_SEARCH_MESSAGE } from '../../utils/constants';
 
 function Movies({
   savedMovies,
@@ -37,10 +36,7 @@ function Movies({
     }
     
     setLocalStorageFilter(storageFilter);
-    if (localStorage.getItem('filteredMovies') === "[]") {
-        setLoadingError(EMPTY_SEARCH_MESSAGE)
-      }
-  }, []);
+  }, [setLoadingError]);
 
   function handleUpdateLocalStorageFilter(storageFilter) {
     setLocalStorageFilter(storageFilter);

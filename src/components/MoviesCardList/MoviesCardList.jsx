@@ -70,18 +70,14 @@ function MoviesCardList({ movies = [], savedMovies, isFirstLoad, setLoadingError
   useEffect(()=>{
     const queryFilter = localStorage.getItem('searchText');
   
-    if(
-        ((queryFilter !== '' || !isFirstLoad ) 
-          && movies.length <= 0 
-          && (!(location.pathname === '/saved-movies' 
-          && savedMovies.length === 0))
-        ) || (location.pathname === '/saved-movies' 
-            && savedMovies.length === 0 
-            && !isFirstLoad)) setLoadingError(EMPTY_SEARCH_MESSAGE)
-    else {
+    if(queryFilter && queryFilter !== '' && movies.length <= 0 && !isFirstLoad) {
+      setLoadingError(EMPTY_SEARCH_MESSAGE)
+    } else if (location.pathname === '/saved-movies' && savedMovies.length === 0 && !isFirstLoad) {
+      setLoadingError(EMPTY_SEARCH_MESSAGE)
+    } else {
       setLoadingError("")
     }
-  },[movies]);
+  },[movies, isFirstLoad, savedMovies.length, location.pathname, setLoadingError]);
 
   return (
     <section>
